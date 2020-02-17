@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   preparator.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sscottie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sscottie <sscottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 02:43:14 by sscottie          #+#    #+#             */
-/*   Updated: 2020/02/06 02:43:20 by sscottie         ###   ########.fr       */
+/*   Updated: 2020/02/12 02:42:36 by sscottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	output_commands(int ac, char **av)
+void	output_commands(void)
 {
 	size_t	fd;
 	char	*line;
@@ -24,11 +24,12 @@ void	output_commands(int ac, char **av)
 		write(1, "\"", 1);
 		write(1, line, ft_strlen(line));
 		write(1, "\", ", 3);
+		free(line);
 	}
 	write(1, "];", 2);
 }
 
-void	output_args(int ac, char **av)
+void	output_args(char **av)
 {
 	int i;
 
@@ -48,9 +49,9 @@ void	output_args(int ac, char **av)
 int		main(int ac, char **av)
 {
 	if (ft_strcmp(av[1], "-a") == 0 && ac > 2)
-		output_args(ac, av);
+		output_args(av);
 	else if (ft_strcmp(av[1], "-c") == 0 && ac > 2)
-		output_commands(ac, av);
+		output_commands();
 	else
 		exit(EXIT_FAILURE);
 	return (0);

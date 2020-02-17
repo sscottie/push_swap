@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sscottie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sscottie <sscottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 02:48:44 by sscottie          #+#    #+#             */
-/*   Updated: 2020/02/06 02:48:46 by sscottie         ###   ########.fr       */
+/*   Updated: 2020/02/12 01:30:45 by sscottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,12 @@ int		main(int ac, char **av)
 	if (init_stack == NULL)
 		error_exit();
 	count = counter(av);
+	if (count == 0)
+		error_exit();
 	all = foo_stacks(count, init_stack);
 	all->checker_on = 0;
 	go_algo(all);
+	free_linked_lists(all);
 	free(init_stack);
 	return (0);
 }

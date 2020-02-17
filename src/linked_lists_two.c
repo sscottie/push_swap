@@ -3,14 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   linked_lists_two.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sscottie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sscottie <sscottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 14:02:00 by sscottie          #+#    #+#             */
-/*   Updated: 2020/02/08 14:02:02 by sscottie         ###   ########.fr       */
+/*   Updated: 2020/02/12 14:30:37 by sscottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	free_stack(t_stack *stack)
+{
+	t_stack	*temp;
+
+	while (stack)
+	{
+		temp = stack;
+		stack = stack->next;
+		free(temp);
+	}
+	stack = NULL;
+}
+
+void	free_linked_lists(t_ps *all)
+{
+	free_stack(all->head_a);
+	if (all->head_b)
+		free_stack(all->head_b);
+	free(all);
+	all = NULL;
+}
 
 void	print_stack_head(t_ps *all)
 {

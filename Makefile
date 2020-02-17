@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sscottie <sscottie@student.21-school.ru    +#+  +:+       +#+         #
+#    By: sscottie <sscottie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/13 18:35:13 by sscottie          #+#    #+#              #
-#    Updated: 2020/02/09 18:40:43 by sscottie         ###   ########.fr        #
+#    Updated: 2020/02/12 16:53:09 by sscottie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ RESET = \033[0m
 P_S 		= push_swap
 CH			= checker
 PR			= preparator
-CFLAGS		= -Wall -g #-Wextra -Werror -g
+CFLAGS		= -Wall -Wextra -Werror
 INC			= -I include
 FT_PF 		= ./lib/ft_printf/
 SRC_DIR		= ./src/
@@ -39,12 +39,16 @@ SRC_P_S		= push_swap.c \
 				production.c \
 				algorithm.c \
 				swap.c \
+				swap_two.c \
 				rotate.c \
+				reverse_rotate.c \
 				push.c \
+				push_two.c \
 				double_stack.c \
 				helper.c \
 				linked_lists.c \
-				linked_lists_two.c
+				linked_lists_two.c \
+				quick_sort.c
 
 SRC_CH		= checker.c \
 				validate.c \
@@ -52,12 +56,16 @@ SRC_CH		= checker.c \
 				production.c \
 				algorithm.c \
 				swap.c \
+				swap_two.c \
 				rotate.c \
+				reverse_rotate.c \
 				push.c \
+				push_two.c \
 				double_stack.c \
 				helper.c \
 				linked_lists.c \
 				linked_lists_two.c \
+				quick_sort.c \
 				reader.c
 
 SRC_PR		= preparator.c \
@@ -66,12 +74,17 @@ SRC_PR		= preparator.c \
 				production.c \
 				algorithm.c \
 				swap.c \
+				swap_two.c \
 				rotate.c \
+				reverse_rotate.c \
 				push.c \
+				push_two.c \
 				double_stack.c \
 				helper.c \
 				linked_lists.c \
-				linked_lists_two.c
+				linked_lists_two.c \
+				quick_sort.c
+
 
 SRC_C_P_S	= $(addprefix $(SRC_DIR), $(SRC_P_S))
 SRC_C_CH	= $(addprefix $(SRC_DIR), $(SRC_CH))

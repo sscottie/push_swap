@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_int_bzero.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sscottie <sscottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/10 15:33:06 by sscottie          #+#    #+#             */
-/*   Updated: 2020/02/12 01:31:53 by sscottie         ###   ########.fr       */
+/*   Created: 2020/02/12 15:37:05 by sscottie          #+#    #+#             */
+/*   Updated: 2020/02/12 15:39:09 by sscottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 8
+#include "libft.h"
 
-# include <fcntl.h>
-# include "libft.h"
+void	ft_int_bzero(int *arr)
+{
+	int	i;
 
-int		get_next_line(const int fd, char **line);
-
-#endif
+	i = 0;
+	while (arr)
+		arr[i] = 0;
+}

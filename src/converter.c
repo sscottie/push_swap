@@ -6,7 +6,7 @@
 /*   By: sscottie <sscottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 17:11:20 by sscottie          #+#    #+#             */
-/*   Updated: 2020/01/09 16:39:43 by sscottie         ###   ########.fr       */
+/*   Updated: 2020/02/12 16:18:42 by sscottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,7 @@ static long	ft_atol_ps(const char *str)
 	return (res * negative);
 }
 
-static int	validate(int *stack, int temp)
-{
-	int i;
-
-	i = 0;
-	while (stack[i] != '\0')
-	{
-		if (stack[i] == temp)
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-static void	cutter(int count, int *stack, char **av)
+static int	*cutter(int count, int *stack, char **av)
 {
 	int		i;
 	char	**temp;
@@ -57,6 +43,8 @@ static void	cutter(int count, int *stack, char **av)
 
 	i = 0;
 	k = 1;
+	j = 0;
+	temp = NULL;
 	while (i != count)
 	{
 		j = 0;
@@ -64,25 +52,25 @@ static void	cutter(int count, int *stack, char **av)
 		while (temp[j] != NULL)
 		{
 			if (ft_atol_ps(temp[j]) >= INT_MIN && ft_atol_ps(temp[j]) \
-				<= INT_MAX && (validate(stack, ft_atoi(temp[j])) == 1))
+				<= INT_MAX)
 				stack[i++] = ft_atoi(temp[j++]);
 			else
 				error_exit();
 		}
-		while (--j != -1)
-			free(temp[j]);
-		free(temp);
-		temp = NULL;
+		ft_free_2d_arr(temp);
 		k++;
 	}
+	return (stack);
 }
 
 int			*convert(int count, char **av)
 {
 	int		*stack;
 
-	stack = (int*)malloc(sizeof(int) * count);
+	if (!(stack = (int*)malloc(sizeof(int) * count)))
+		return (NULL);
 	ft_bzero(stack, count);
-	cutter(count, stack, av);
+	stack[0] = 0;
+	stack = cutter(count, stack, av);
 	return (stack);
 }

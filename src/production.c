@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   production.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sscottie <sscottie@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: sscottie <sscottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 14:02:45 by sscottie          #+#    #+#             */
-/*   Updated: 2020/02/09 20:48:03 by sscottie         ###   ########.fr       */
+/*   Updated: 2020/02/12 14:34:51 by sscottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ t_ps	*foo_stacks(int count, int *stack)
 	if (!(all = (t_ps *)malloc(sizeof(t_ps))))
 		exit(EXIT_FAILURE);
 	all->head_b = NULL;
+	all->size_b = 0;
 	all->total = count;
 	fill_linked_list(all, stack);
 	set_index(all->a, count, all);
+	ft_fill_info(all);
 	all->min = 0;
 	return (all);
 }
@@ -53,32 +55,40 @@ void	fill_linked_list(t_ps *all, int *stack)
 
 void	go_algo(t_ps *all)
 {
-	if (!check_is_sorted(all->head_a))
+	if (!check_if_sorted(all->head_a))
 	{
 		if (all->size_a == 2)
 			sa(all);
 		else if (all->size_a == 3)
-			do_best_of_three(all);
-		else if (all->size_a > 3 && all->size_a < 10)
+			do_best_of_three_a(all);
+		else if (all->size_a > 3 && all->size_a < 7)
 			do_for_middle(all);
-		else if (all->size_a >= 10 && all->size_a <= 100)
-			worse_but_works(all);
 		else
-			algo(all, all->total * 9 / 10);
+		{
+			ft_first_search_mid_and_split(all);
+			while (all->status.next != all->status.last)
+			{
+				while (all->head_b)
+					ft_search_mid_and_split_b(all);
+				ft_search_mid_and_split_a(all);
+			}
+		}
 	}
 }
 
-int		check_is_sorted(t_stack *stack)
+int		check_if_sorted(t_stack *stack)
 {
 	int		i;
+	t_stack	*p;
 
-	i = stack->num_index;
-	while (stack != NULL)
+	p = stack;
+	i = p->num_index;
+	while (p != NULL)
 	{
-		if (stack->num_index == i)
+		if (i == p->num_index)
 		{
 			i++;
-			stack = stack->next;
+			p = p->next;
 		}
 		else
 			return (0);
@@ -91,7 +101,7 @@ void	set_index(struct s_stack *stack, int count, t_ps *all)
 	t_stack		*ret;
 	int			index;
 
-	index = 0;
+	index = 1;
 	while ((ret = get_next_index(stack, count, all)))
 		ret->num_index = index++;
 	all->max = index - 1;

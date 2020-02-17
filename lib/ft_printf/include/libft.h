@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sscottie <sscottie@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: sscottie <sscottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 16:28:48 by sscottie          #+#    #+#             */
-/*   Updated: 2020/02/09 18:05:37 by sscottie         ###   ########.fr       */
+/*   Updated: 2020/02/12 15:39:38 by sscottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,6 @@ long double			ft_fabsl(long double x);
 double				ft_fabs(double x);
 void				ft_free_2d_arr(char **ar);
 int					ft_sum(int count, const int *arr);
+void				ft_int_bzero(int *arr);
 
 #endif

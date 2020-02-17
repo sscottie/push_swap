@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reader.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sscottie <sscottie@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: sscottie <sscottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 13:34:00 by sscottie          #+#    #+#             */
-/*   Updated: 2020/02/09 20:49:57 by sscottie         ###   ########.fr       */
+/*   Updated: 2020/02/12 01:31:34 by sscottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,9 @@ void	reader(t_ps *all)
 			exit(EXIT_FAILURE);
 		}
 		free(line);
-		print_ps(all);
 	}
 	close(fd);
-	if (check_is_sorted(all->head_a) && all->size_b == 0)
+	if (check_if_sorted(all->head_a) && all->size_b == 0)
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");

@@ -6,7 +6,7 @@
 #    By: sscottie <sscottie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:10:05 by rdonnor           #+#    #+#              #
-#    Updated: 2020/01/06 15:58:18 by sscottie         ###   ########.fr        #
+#    Updated: 2020/02/12 16:53:19 by sscottie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ HEADDERS = libft.h ft_printf.h get_next_line.h
 VPATH = libft:src/:include
 FT_PRINTF = libftprintf.a
 LIBFT = libft.a
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra
 HEADER = -I include
 
 OBJ_DIR = obj/
@@ -101,7 +101,8 @@ LFT_SRC =   ft_abs.c \
             ft_tolower.c \
             ft_toupper.c \
             ft_free_2d_arr.c \
-            ft_sum.c
+            ft_sum.c \
+			ft_int_bzero.c
 
 PF_SRC =	convert_float.c \
             crossroads.c \
