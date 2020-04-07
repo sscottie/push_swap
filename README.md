@@ -4,7 +4,8 @@
 
 Main idea to sort the arrray of ints with minimal count of commands;
 
-C, HTML, CSS, JavaScript used. 
+C, HTML, CSS, JavaScript are used.
+**Warning: MacOs only!**
 
 ## Usage
 
